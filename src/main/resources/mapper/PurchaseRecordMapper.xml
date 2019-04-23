@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.khxcx.mapper.PurchaseRecordMapper" >
+  <resultMap id="BaseResultMap" type="com.example.khxcx.pojo.PurchaseRecord" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="blank_space_one" property="blankSpaceOne" jdbcType="VARCHAR" />
+    <result column="blank_space_three" property="blankSpaceThree" jdbcType="VARCHAR" />
+    <result column="blank_space_two" property="blankSpaceTwo" jdbcType="VARCHAR" />
+    <result column="buyer_id" property="buyerId" jdbcType="BIGINT" />
+    <result column="buying_time" property="buyingTime" jdbcType="VARCHAR" />
+    <result column="purchase_price" property="purchasePrice" jdbcType="DOUBLE" />
+    <result column="purchase_quantity" property="purchaseQuantity" jdbcType="DOUBLE" />
+    <result column="seller_id" property="sellerId" jdbcType="BIGINT" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    id, blank_space_one, blank_space_three, blank_space_two, buyer_id, buying_time, purchase_price, 
+    purchase_quantity, seller_id
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.example.khxcx.pojo.PurchaseRecordExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from purchase_record
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from purchase_record
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from purchase_record
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.example.khxcx.pojo.PurchaseRecordExample" >
+    delete from purchase_record
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.example.khxcx.pojo.PurchaseRecord" >
+    insert into purchase_record (id, blank_space_one, blank_space_three, 
+      blank_space_two, buyer_id, buying_time, 
+      purchase_price, purchase_quantity, seller_id
+      )
+    values (#{id,jdbcType=BIGINT}, #{blankSpaceOne,jdbcType=VARCHAR}, #{blankSpaceThree,jdbcType=VARCHAR}, 
+      #{blankSpaceTwo,jdbcType=VARCHAR}, #{buyerId,jdbcType=BIGINT}, #{buyingTime,jdbcType=VARCHAR}, 
+      #{purchasePrice,jdbcType=DOUBLE}, #{purchaseQuantity,jdbcType=DOUBLE}, #{sellerId,jdbcType=BIGINT}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.example.khxcx.pojo.PurchaseRecord" >
+    insert into purchase_record
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="blankSpaceOne != null" >
+        blank_space_one,
+      </if>
+      <if test="blankSpaceThree != null" >
+        blank_space_three,
+      </if>
+      <if test="blankSpaceTwo != null" >
+        blank_space_two,
+      </if>
+      <if test="buyerId != null" >
+        buyer_id,
+      </if>
+      <if test="buyingTime != null" >
+        buying_time,
+      </if>
+      <if test="purchasePrice != null" >
+        purchase_price,
+      </if>
+      <if test="purchaseQuantity != null" >
+        purchase_quantity,
+      </if>
+      <if test="sellerId != null" >
+        seller_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="blankSpaceOne != null" >
+        #{blankSpaceOne,jdbcType=VARCHAR},
+      </if>
+      <if test="blankSpaceThree != null" >
+        #{blankSpaceThree,jdbcType=VARCHAR},
+      </if>
+      <if test="blankSpaceTwo != null" >
+        #{blankSpaceTwo,jdbcType=VARCHAR},
+      </if>
+      <if test="buyerId != null" >
+        #{buyerId,jdbcType=BIGINT},
+      </if>
+      <if test="buyingTime != null" >
+        #{buyingTime,jdbcType=VARCHAR},
+      </if>
+      <if test="purchasePrice != null" >
+        #{purchasePrice,jdbcType=DOUBLE},
+      </if>
+      <if test="purchaseQuantity != null" >
+        #{purchaseQuantity,jdbcType=DOUBLE},
+      </if>
+      <if test="sellerId != null" >
+        #{sellerId,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.example.khxcx.pojo.PurchaseRecordExample" resultType="java.lang.Integer" >
+    select count(*) from purchase_record
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update purchase_record
+    <set >
+      <if test="record.id != null" >
+        id = #{record.id,jdbcType=BIGINT},
+      </if>
+      <if test="record.blankSpaceOne != null" >
+        blank_space_one = #{record.blankSpaceOne,jdbcType=VARCHAR},
+      </if>
+      <if test="record.blankSpaceThree != null" >
+        blank_space_three = #{record.blankSpaceThree,jdbcType=VARCHAR},
+      </if>
+      <if test="record.blankSpaceTwo != null" >
+        blank_space_two = #{record.blankSpaceTwo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.buyerId != null" >
+        buyer_id = #{record.buyerId,jdbcType=BIGINT},
+      </if>
+      <if test="record.buyingTime != null" >
+        buying_time = #{record.buyingTime,jdbcType=VARCHAR},
+      </if>
+      <if test="record.purchasePrice != null" >
+        purchase_price = #{record.purchasePrice,jdbcType=DOUBLE},
+      </if>
+      <if test="record.purchaseQuantity != null" >
+        purchase_quantity = #{record.purchaseQuantity,jdbcType=DOUBLE},
+      </if>
+      <if test="record.sellerId != null" >
+        seller_id = #{record.sellerId,jdbcType=BIGINT},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update purchase_record
+    set id = #{record.id,jdbcType=BIGINT},
+      blank_space_one = #{record.blankSpaceOne,jdbcType=VARCHAR},
+      blank_space_three = #{record.blankSpaceThree,jdbcType=VARCHAR},
+      blank_space_two = #{record.blankSpaceTwo,jdbcType=VARCHAR},
+      buyer_id = #{record.buyerId,jdbcType=BIGINT},
+      buying_time = #{record.buyingTime,jdbcType=VARCHAR},
+      purchase_price = #{record.purchasePrice,jdbcType=DOUBLE},
+      purchase_quantity = #{record.purchaseQuantity,jdbcType=DOUBLE},
+      seller_id = #{record.sellerId,jdbcType=BIGINT}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.khxcx.pojo.PurchaseRecord" >
+    update purchase_record
+    <set >
+      <if test="blankSpaceOne != null" >
+        blank_space_one = #{blankSpaceOne,jdbcType=VARCHAR},
+      </if>
+      <if test="blankSpaceThree != null" >
+        blank_space_three = #{blankSpaceThree,jdbcType=VARCHAR},
+      </if>
+      <if test="blankSpaceTwo != null" >
+        blank_space_two = #{blankSpaceTwo,jdbcType=VARCHAR},
+      </if>
+      <if test="buyerId != null" >
+        buyer_id = #{buyerId,jdbcType=BIGINT},
+      </if>
+      <if test="buyingTime != null" >
+        buying_time = #{buyingTime,jdbcType=VARCHAR},
+      </if>
+      <if test="purchasePrice != null" >
+        purchase_price = #{purchasePrice,jdbcType=DOUBLE},
+      </if>
+      <if test="purchaseQuantity != null" >
+        purchase_quantity = #{purchaseQuantity,jdbcType=DOUBLE},
+      </if>
+      <if test="sellerId != null" >
+        seller_id = #{sellerId,jdbcType=BIGINT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.example.khxcx.pojo.PurchaseRecord" >
+    update purchase_record
+    set blank_space_one = #{blankSpaceOne,jdbcType=VARCHAR},
+      blank_space_three = #{blankSpaceThree,jdbcType=VARCHAR},
+      blank_space_two = #{blankSpaceTwo,jdbcType=VARCHAR},
+      buyer_id = #{buyerId,jdbcType=BIGINT},
+      buying_time = #{buyingTime,jdbcType=VARCHAR},
+      purchase_price = #{purchasePrice,jdbcType=DOUBLE},
+      purchase_quantity = #{purchaseQuantity,jdbcType=DOUBLE},
+      seller_id = #{sellerId,jdbcType=BIGINT}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.khxcx.mapper.DiscountRecordMapper" >
+  <resultMap id="BaseResultMap" type="com.example.khxcx.pojo.DiscountRecord" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="blank_space_one" property="blankSpaceOne" jdbcType="VARCHAR" />
+    <result column="blank_space_three" property="blankSpaceThree" jdbcType="VARCHAR" />
+    <result column="blank_space_two" property="blankSpaceTwo" jdbcType="VARCHAR" />
+    <result column="money" property="money" jdbcType="DOUBLE" />
+    <result column="open_id" property="openId" jdbcType="VARCHAR" />
+    <result column="time" property="time" jdbcType="VARCHAR" />
+    <result column="unin_id" property="uninId" jdbcType="VARCHAR" />
+    <result column="user_id" property="userId" jdbcType="BIGINT" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    id, blank_space_one, blank_space_three, blank_space_two, money, open_id, time, unin_id, 
+    user_id
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.example.khxcx.pojo.DiscountRecordExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from discount_record
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from discount_record
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from discount_record
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.example.khxcx.pojo.DiscountRecordExample" >
+    delete from discount_record
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.example.khxcx.pojo.DiscountRecord" >
+    insert into discount_record (id, blank_space_one, blank_space_three, 
+      blank_space_two, money, open_id, 
+      time, unin_id, user_id
+      )
+    values (#{id,jdbcType=BIGINT}, #{blankSpaceOne,jdbcType=VARCHAR}, #{blankSpaceThree,jdbcType=VARCHAR}, 
+      #{blankSpaceTwo,jdbcType=VARCHAR}, #{money,jdbcType=DOUBLE}, #{openId,jdbcType=VARCHAR}, 
+      #{time,jdbcType=VARCHAR}, #{uninId,jdbcType=VARCHAR}, #{userId,jdbcType=BIGINT}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.example.khxcx.pojo.DiscountRecord" >
+    insert into discount_record
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="blankSpaceOne != null" >
+        blank_space_one,
+      </if>
+      <if test="blankSpaceThree != null" >
+        blank_space_three,
+      </if>
+      <if test="blankSpaceTwo != null" >
+        blank_space_two,
+      </if>
+      <if test="money != null" >
+        money,
+      </if>
+      <if test="openId != null" >
+        open_id,
+      </if>
+      <if test="time != null" >
+        time,
+      </if>
+      <if test="uninId != null" >
+        unin_id,
+      </if>
+      <if test="userId != null" >
+        user_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="blankSpaceOne != null" >
+        #{blankSpaceOne,jdbcType=VARCHAR},
+      </if>
+      <if test="blankSpaceThree != null" >
+        #{blankSpaceThree,jdbcType=VARCHAR},
+      </if>
+      <if test="blankSpaceTwo != null" >
+        #{blankSpaceTwo,jdbcType=VARCHAR},
+      </if>
+      <if test="money != null" >
+        #{money,jdbcType=DOUBLE},
+      </if>
+      <if test="openId != null" >
+        #{openId,jdbcType=VARCHAR},
+      </if>
+      <if test="time != null" >
+        #{time,jdbcType=VARCHAR},
+      </if>
+      <if test="uninId != null" >
+        #{uninId,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.example.khxcx.pojo.DiscountRecordExample" resultType="java.lang.Integer" >
+    select count(*) from discount_record
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update discount_record
+    <set >
+      <if test="record.id != null" >
+        id = #{record.id,jdbcType=BIGINT},
+      </if>
+      <if test="record.blankSpaceOne != null" >
+        blank_space_one = #{record.blankSpaceOne,jdbcType=VARCHAR},
+      </if>
+      <if test="record.blankSpaceThree != null" >
+        blank_space_three = #{record.blankSpaceThree,jdbcType=VARCHAR},
+      </if>
+      <if test="record.blankSpaceTwo != null" >
+        blank_space_two = #{record.blankSpaceTwo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.money != null" >
+        money = #{record.money,jdbcType=DOUBLE},
+      </if>
+      <if test="record.openId != null" >
+        open_id = #{record.openId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.time != null" >
+        time = #{record.time,jdbcType=VARCHAR},
+      </if>
+      <if test="record.uninId != null" >
+        unin_id = #{record.uninId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.userId != null" >
+        user_id = #{record.userId,jdbcType=BIGINT},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update discount_record
+    set id = #{record.id,jdbcType=BIGINT},
+      blank_space_one = #{record.blankSpaceOne,jdbcType=VARCHAR},
+      blank_space_three = #{record.blankSpaceThree,jdbcType=VARCHAR},
+      blank_space_two = #{record.blankSpaceTwo,jdbcType=VARCHAR},
+      money = #{record.money,jdbcType=DOUBLE},
+      open_id = #{record.openId,jdbcType=VARCHAR},
+      time = #{record.time,jdbcType=VARCHAR},
+      unin_id = #{record.uninId,jdbcType=VARCHAR},
+      user_id = #{record.userId,jdbcType=BIGINT}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.khxcx.pojo.DiscountRecord" >
+    update discount_record
+    <set >
+      <if test="blankSpaceOne != null" >
+        blank_space_one = #{blankSpaceOne,jdbcType=VARCHAR},
+      </if>
+      <if test="blankSpaceThree != null" >
+        blank_space_three = #{blankSpaceThree,jdbcType=VARCHAR},
+      </if>
+      <if test="blankSpaceTwo != null" >
+        blank_space_two = #{blankSpaceTwo,jdbcType=VARCHAR},
+      </if>
+      <if test="money != null" >
+        money = #{money,jdbcType=DOUBLE},
+      </if>
+      <if test="openId != null" >
+        open_id = #{openId,jdbcType=VARCHAR},
+      </if>
+      <if test="time != null" >
+        time = #{time,jdbcType=VARCHAR},
+      </if>
+      <if test="uninId != null" >
+        unin_id = #{uninId,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null" >
+        user_id = #{userId,jdbcType=BIGINT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.example.khxcx.pojo.DiscountRecord" >
+    update discount_record
+    set blank_space_one = #{blankSpaceOne,jdbcType=VARCHAR},
+      blank_space_three = #{blankSpaceThree,jdbcType=VARCHAR},
+      blank_space_two = #{blankSpaceTwo,jdbcType=VARCHAR},
+      money = #{money,jdbcType=DOUBLE},
+      open_id = #{openId,jdbcType=VARCHAR},
+      time = #{time,jdbcType=VARCHAR},
+      unin_id = #{uninId,jdbcType=VARCHAR},
+      user_id = #{userId,jdbcType=BIGINT}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

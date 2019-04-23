@@ -1,0 +1,353 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.khxcx.mapper.UserIfoMapper" >
+  <resultMap id="BaseResultMap" type="com.example.khxcx.pojo.UserIfo" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="age" property="age" jdbcType="VARCHAR" />
+    <result column="blank_space_one" property="blankSpaceOne" jdbcType="VARCHAR" />
+    <result column="blank_space_three" property="blankSpaceThree" jdbcType="VARCHAR" />
+    <result column="blank_space_two" property="blankSpaceTwo" jdbcType="VARCHAR" />
+    <result column="given_name" property="givenName" jdbcType="VARCHAR" />
+    <result column="introduce" property="introduce" jdbcType="VARCHAR" />
+    <result column="last_priece" property="lastPriece" jdbcType="DOUBLE" />
+    <result column="phone_number" property="phoneNumber" jdbcType="VARCHAR" />
+    <result column="priece" property="priece" jdbcType="DOUBLE" />
+    <result column="sex" property="sex" jdbcType="VARCHAR" />
+    <result column="shengyugoumailaing" property="shengyugoumailaing" jdbcType="DOUBLE" />
+    <result column="type" property="type" jdbcType="VARCHAR" />
+    <result column="user_id" property="userId" jdbcType="BIGINT" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    id, age, blank_space_one, blank_space_three, blank_space_two, given_name, introduce, 
+    last_priece, phone_number, priece, sex, shengyugoumailaing, type, user_id
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.example.khxcx.pojo.UserIfoExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from user_ifo
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from user_ifo
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from user_ifo
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.example.khxcx.pojo.UserIfoExample" >
+    delete from user_ifo
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.example.khxcx.pojo.UserIfo" >
+    insert into user_ifo (id, age, blank_space_one, 
+      blank_space_three, blank_space_two, given_name, 
+      introduce, last_priece, phone_number, 
+      priece, sex, shengyugoumailaing, 
+      type, user_id)
+    values (#{id,jdbcType=BIGINT}, #{age,jdbcType=VARCHAR}, #{blankSpaceOne,jdbcType=VARCHAR}, 
+      #{blankSpaceThree,jdbcType=VARCHAR}, #{blankSpaceTwo,jdbcType=VARCHAR}, #{givenName,jdbcType=VARCHAR}, 
+      #{introduce,jdbcType=VARCHAR}, #{lastPriece,jdbcType=DOUBLE}, #{phoneNumber,jdbcType=VARCHAR}, 
+      #{priece,jdbcType=DOUBLE}, #{sex,jdbcType=VARCHAR}, #{shengyugoumailaing,jdbcType=DOUBLE}, 
+      #{type,jdbcType=VARCHAR}, #{userId,jdbcType=BIGINT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.example.khxcx.pojo.UserIfo" >
+    insert into user_ifo
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="age != null" >
+        age,
+      </if>
+      <if test="blankSpaceOne != null" >
+        blank_space_one,
+      </if>
+      <if test="blankSpaceThree != null" >
+        blank_space_three,
+      </if>
+      <if test="blankSpaceTwo != null" >
+        blank_space_two,
+      </if>
+      <if test="givenName != null" >
+        given_name,
+      </if>
+      <if test="introduce != null" >
+        introduce,
+      </if>
+      <if test="lastPriece != null" >
+        last_priece,
+      </if>
+      <if test="phoneNumber != null" >
+        phone_number,
+      </if>
+      <if test="priece != null" >
+        priece,
+      </if>
+      <if test="sex != null" >
+        sex,
+      </if>
+      <if test="shengyugoumailaing != null" >
+        shengyugoumailaing,
+      </if>
+      <if test="type != null" >
+        type,
+      </if>
+      <if test="userId != null" >
+        user_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="age != null" >
+        #{age,jdbcType=VARCHAR},
+      </if>
+      <if test="blankSpaceOne != null" >
+        #{blankSpaceOne,jdbcType=VARCHAR},
+      </if>
+      <if test="blankSpaceThree != null" >
+        #{blankSpaceThree,jdbcType=VARCHAR},
+      </if>
+      <if test="blankSpaceTwo != null" >
+        #{blankSpaceTwo,jdbcType=VARCHAR},
+      </if>
+      <if test="givenName != null" >
+        #{givenName,jdbcType=VARCHAR},
+      </if>
+      <if test="introduce != null" >
+        #{introduce,jdbcType=VARCHAR},
+      </if>
+      <if test="lastPriece != null" >
+        #{lastPriece,jdbcType=DOUBLE},
+      </if>
+      <if test="phoneNumber != null" >
+        #{phoneNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="priece != null" >
+        #{priece,jdbcType=DOUBLE},
+      </if>
+      <if test="sex != null" >
+        #{sex,jdbcType=VARCHAR},
+      </if>
+      <if test="shengyugoumailaing != null" >
+        #{shengyugoumailaing,jdbcType=DOUBLE},
+      </if>
+      <if test="type != null" >
+        #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.example.khxcx.pojo.UserIfoExample" resultType="java.lang.Integer" >
+    select count(*) from user_ifo
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update user_ifo
+    <set >
+      <if test="record.id != null" >
+        id = #{record.id,jdbcType=BIGINT},
+      </if>
+      <if test="record.age != null" >
+        age = #{record.age,jdbcType=VARCHAR},
+      </if>
+      <if test="record.blankSpaceOne != null" >
+        blank_space_one = #{record.blankSpaceOne,jdbcType=VARCHAR},
+      </if>
+      <if test="record.blankSpaceThree != null" >
+        blank_space_three = #{record.blankSpaceThree,jdbcType=VARCHAR},
+      </if>
+      <if test="record.blankSpaceTwo != null" >
+        blank_space_two = #{record.blankSpaceTwo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.givenName != null" >
+        given_name = #{record.givenName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.introduce != null" >
+        introduce = #{record.introduce,jdbcType=VARCHAR},
+      </if>
+      <if test="record.lastPriece != null" >
+        last_priece = #{record.lastPriece,jdbcType=DOUBLE},
+      </if>
+      <if test="record.phoneNumber != null" >
+        phone_number = #{record.phoneNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="record.priece != null" >
+        priece = #{record.priece,jdbcType=DOUBLE},
+      </if>
+      <if test="record.sex != null" >
+        sex = #{record.sex,jdbcType=VARCHAR},
+      </if>
+      <if test="record.shengyugoumailaing != null" >
+        shengyugoumailaing = #{record.shengyugoumailaing,jdbcType=DOUBLE},
+      </if>
+      <if test="record.type != null" >
+        type = #{record.type,jdbcType=VARCHAR},
+      </if>
+      <if test="record.userId != null" >
+        user_id = #{record.userId,jdbcType=BIGINT},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update user_ifo
+    set id = #{record.id,jdbcType=BIGINT},
+      age = #{record.age,jdbcType=VARCHAR},
+      blank_space_one = #{record.blankSpaceOne,jdbcType=VARCHAR},
+      blank_space_three = #{record.blankSpaceThree,jdbcType=VARCHAR},
+      blank_space_two = #{record.blankSpaceTwo,jdbcType=VARCHAR},
+      given_name = #{record.givenName,jdbcType=VARCHAR},
+      introduce = #{record.introduce,jdbcType=VARCHAR},
+      last_priece = #{record.lastPriece,jdbcType=DOUBLE},
+      phone_number = #{record.phoneNumber,jdbcType=VARCHAR},
+      priece = #{record.priece,jdbcType=DOUBLE},
+      sex = #{record.sex,jdbcType=VARCHAR},
+      shengyugoumailaing = #{record.shengyugoumailaing,jdbcType=DOUBLE},
+      type = #{record.type,jdbcType=VARCHAR},
+      user_id = #{record.userId,jdbcType=BIGINT}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.khxcx.pojo.UserIfo" >
+    update user_ifo
+    <set >
+      <if test="age != null" >
+        age = #{age,jdbcType=VARCHAR},
+      </if>
+      <if test="blankSpaceOne != null" >
+        blank_space_one = #{blankSpaceOne,jdbcType=VARCHAR},
+      </if>
+      <if test="blankSpaceThree != null" >
+        blank_space_three = #{blankSpaceThree,jdbcType=VARCHAR},
+      </if>
+      <if test="blankSpaceTwo != null" >
+        blank_space_two = #{blankSpaceTwo,jdbcType=VARCHAR},
+      </if>
+      <if test="givenName != null" >
+        given_name = #{givenName,jdbcType=VARCHAR},
+      </if>
+      <if test="introduce != null" >
+        introduce = #{introduce,jdbcType=VARCHAR},
+      </if>
+      <if test="lastPriece != null" >
+        last_priece = #{lastPriece,jdbcType=DOUBLE},
+      </if>
+      <if test="phoneNumber != null" >
+        phone_number = #{phoneNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="priece != null" >
+        priece = #{priece,jdbcType=DOUBLE},
+      </if>
+      <if test="sex != null" >
+        sex = #{sex,jdbcType=VARCHAR},
+      </if>
+      <if test="shengyugoumailaing != null" >
+        shengyugoumailaing = #{shengyugoumailaing,jdbcType=DOUBLE},
+      </if>
+      <if test="type != null" >
+        type = #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null" >
+        user_id = #{userId,jdbcType=BIGINT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.example.khxcx.pojo.UserIfo" >
+    update user_ifo
+    set age = #{age,jdbcType=VARCHAR},
+      blank_space_one = #{blankSpaceOne,jdbcType=VARCHAR},
+      blank_space_three = #{blankSpaceThree,jdbcType=VARCHAR},
+      blank_space_two = #{blankSpaceTwo,jdbcType=VARCHAR},
+      given_name = #{givenName,jdbcType=VARCHAR},
+      introduce = #{introduce,jdbcType=VARCHAR},
+      last_priece = #{lastPriece,jdbcType=DOUBLE},
+      phone_number = #{phoneNumber,jdbcType=VARCHAR},
+      priece = #{priece,jdbcType=DOUBLE},
+      sex = #{sex,jdbcType=VARCHAR},
+      shengyugoumailaing = #{shengyugoumailaing,jdbcType=DOUBLE},
+      type = #{type,jdbcType=VARCHAR},
+      user_id = #{userId,jdbcType=BIGINT}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

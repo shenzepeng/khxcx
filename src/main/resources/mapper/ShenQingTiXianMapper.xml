@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.khxcx.mapper.ShenQingTiXianMapper" >
+  <resultMap id="BaseResultMap" type="com.example.khxcx.pojo.ShenQingTiXian" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="blank_space_one" property="blankSpaceOne" jdbcType="VARCHAR" />
+    <result column="blank_space_three" property="blankSpaceThree" jdbcType="VARCHAR" />
+    <result column="blank_space_two" property="blankSpaceTwo" jdbcType="VARCHAR" />
+    <result column="money" property="money" jdbcType="DOUBLE" />
+    <result column="open_id" property="openId" jdbcType="VARCHAR" />
+    <result column="phone_number" property="phoneNumber" jdbcType="VARCHAR" />
+    <result column="status" property="status" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    id, blank_space_one, blank_space_three, blank_space_two, money, open_id, phone_number, 
+    status
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.example.khxcx.pojo.ShenQingTiXianExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from shen_qing_ti_xian
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from shen_qing_ti_xian
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from shen_qing_ti_xian
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.example.khxcx.pojo.ShenQingTiXianExample" >
+    delete from shen_qing_ti_xian
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.example.khxcx.pojo.ShenQingTiXian" >
+    insert into shen_qing_ti_xian (id, blank_space_one, blank_space_three, 
+      blank_space_two, money, open_id, 
+      phone_number, status)
+    values (#{id,jdbcType=BIGINT}, #{blankSpaceOne,jdbcType=VARCHAR}, #{blankSpaceThree,jdbcType=VARCHAR}, 
+      #{blankSpaceTwo,jdbcType=VARCHAR}, #{money,jdbcType=DOUBLE}, #{openId,jdbcType=VARCHAR}, 
+      #{phoneNumber,jdbcType=VARCHAR}, #{status,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.example.khxcx.pojo.ShenQingTiXian" >
+    insert into shen_qing_ti_xian
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="blankSpaceOne != null" >
+        blank_space_one,
+      </if>
+      <if test="blankSpaceThree != null" >
+        blank_space_three,
+      </if>
+      <if test="blankSpaceTwo != null" >
+        blank_space_two,
+      </if>
+      <if test="money != null" >
+        money,
+      </if>
+      <if test="openId != null" >
+        open_id,
+      </if>
+      <if test="phoneNumber != null" >
+        phone_number,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="blankSpaceOne != null" >
+        #{blankSpaceOne,jdbcType=VARCHAR},
+      </if>
+      <if test="blankSpaceThree != null" >
+        #{blankSpaceThree,jdbcType=VARCHAR},
+      </if>
+      <if test="blankSpaceTwo != null" >
+        #{blankSpaceTwo,jdbcType=VARCHAR},
+      </if>
+      <if test="money != null" >
+        #{money,jdbcType=DOUBLE},
+      </if>
+      <if test="openId != null" >
+        #{openId,jdbcType=VARCHAR},
+      </if>
+      <if test="phoneNumber != null" >
+        #{phoneNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.example.khxcx.pojo.ShenQingTiXianExample" resultType="java.lang.Integer" >
+    select count(*) from shen_qing_ti_xian
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update shen_qing_ti_xian
+    <set >
+      <if test="record.id != null" >
+        id = #{record.id,jdbcType=BIGINT},
+      </if>
+      <if test="record.blankSpaceOne != null" >
+        blank_space_one = #{record.blankSpaceOne,jdbcType=VARCHAR},
+      </if>
+      <if test="record.blankSpaceThree != null" >
+        blank_space_three = #{record.blankSpaceThree,jdbcType=VARCHAR},
+      </if>
+      <if test="record.blankSpaceTwo != null" >
+        blank_space_two = #{record.blankSpaceTwo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.money != null" >
+        money = #{record.money,jdbcType=DOUBLE},
+      </if>
+      <if test="record.openId != null" >
+        open_id = #{record.openId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.phoneNumber != null" >
+        phone_number = #{record.phoneNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="record.status != null" >
+        status = #{record.status,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update shen_qing_ti_xian
+    set id = #{record.id,jdbcType=BIGINT},
+      blank_space_one = #{record.blankSpaceOne,jdbcType=VARCHAR},
+      blank_space_three = #{record.blankSpaceThree,jdbcType=VARCHAR},
+      blank_space_two = #{record.blankSpaceTwo,jdbcType=VARCHAR},
+      money = #{record.money,jdbcType=DOUBLE},
+      open_id = #{record.openId,jdbcType=VARCHAR},
+      phone_number = #{record.phoneNumber,jdbcType=VARCHAR},
+      status = #{record.status,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.khxcx.pojo.ShenQingTiXian" >
+    update shen_qing_ti_xian
+    <set >
+      <if test="blankSpaceOne != null" >
+        blank_space_one = #{blankSpaceOne,jdbcType=VARCHAR},
+      </if>
+      <if test="blankSpaceThree != null" >
+        blank_space_three = #{blankSpaceThree,jdbcType=VARCHAR},
+      </if>
+      <if test="blankSpaceTwo != null" >
+        blank_space_two = #{blankSpaceTwo,jdbcType=VARCHAR},
+      </if>
+      <if test="money != null" >
+        money = #{money,jdbcType=DOUBLE},
+      </if>
+      <if test="openId != null" >
+        open_id = #{openId,jdbcType=VARCHAR},
+      </if>
+      <if test="phoneNumber != null" >
+        phone_number = #{phoneNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.example.khxcx.pojo.ShenQingTiXian" >
+    update shen_qing_ti_xian
+    set blank_space_one = #{blankSpaceOne,jdbcType=VARCHAR},
+      blank_space_three = #{blankSpaceThree,jdbcType=VARCHAR},
+      blank_space_two = #{blankSpaceTwo,jdbcType=VARCHAR},
+      money = #{money,jdbcType=DOUBLE},
+      open_id = #{openId,jdbcType=VARCHAR},
+      phone_number = #{phoneNumber,jdbcType=VARCHAR},
+      status = #{status,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>
