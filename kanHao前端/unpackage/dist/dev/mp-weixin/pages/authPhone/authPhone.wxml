@@ -1,0 +1,2 @@
+<import src="./authPhone.vue.wxml" />
+    <template is="30d9e14b" data="{{ ...$root['0'], $root }}"/>

@@ -1,0 +1,13 @@
+.uni-media-list-body {
+  position: relative;
+}
+.money-box {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+      -ms-transform: translateY(-50%);
+          transform: translateY(-50%);
+  font-size: 26rpx;
+}
+

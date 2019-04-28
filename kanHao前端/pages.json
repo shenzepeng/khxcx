@@ -1,0 +1,117 @@
+{
+    "pages" : [
+        //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
+        {
+            "path" : "pages/index/index",
+            "style" : {
+                "navigationBarTitleText" : "首页"
+            }
+        },
+        {
+            "path" : "pages/uni-center/uni-center",
+            "style" : {
+                "navigationBarTitleText" : "个人中心"
+            }
+        },
+        {
+            "path" : "pages/HM-search/HM-search",
+            "style" : {
+                "navigationBarTitleText" : "搜索"
+            }
+        },
+        {
+            "path" : "pages/userinfo/userinfo",
+            "style" : {
+                "navigationBarTitleText" : "账号管理"
+            }
+        },
+        {
+            "path" : "pages/login/login",
+            "style" : {
+                "navigationBarTitleText" : "授权"
+            }
+        },
+        {
+            "path" : "pages/wallet/wallet",
+            "style" : {
+                "backgroundColor" : "#f8f8f8",
+                "navigationBarTitleText" : "钱包"
+            }
+        },
+        {
+            "path" : "pages/authPhone/authPhone",
+            "style" : {
+                "backgroundColor" : "#f8f8f8",
+                "navigationBarTitleText" : "验证身份"
+            }
+        },
+        {
+            "path" : "pages/goList/goList",
+            "style" : {
+                "navigationBarTitleText" : "上市信息"
+            }
+        },
+        {
+            "path" : "pages/editList/editList",
+            "style" : {
+                "navigationBarTitleText" : "编辑信息"
+            }
+        },
+        {
+            "path" : "pages/myInvest/myInvest",
+            "style" : {
+                "navigationBarTitleText" : "我的投资"
+            }
+        },
+        {
+            "path" : "pages/investDetail/investDetail",
+            "style" : {
+                "navigationBarTitleText" : "详细信息"
+            }
+        },
+        {
+            "path" : "pages/buy/buy",
+            "style" : {
+                "navigationBarTitleText" : "买入"
+            }
+        },
+        {
+            "path" : "pages/indexInvestDetail/indexInvestDetail",
+            "style" : {
+                "navigationBarTitleText" : "详细信息"
+            }
+        },
+        {
+            "path" : "pages/sell/sell",
+            "style" : {
+                "navigationBarTitleText" : "卖出"
+            }
+        }
+    ],
+    "globalStyle" : {
+        "navigationBarTextStyle" : "black",
+        "navigationBarTitleText" : "uni-app",
+        "navigationBarBackgroundColor" : "#F8F8F8",
+        "backgroundColor" : "#F8F8F8"
+    },
+    "tabBar" : {
+        "color" : "#7A7E83",
+        "selectedColor" : "#007AFF",
+        "borderStyle" : "black",
+        "backgroundColor" : "#F8F8F8",
+        "list" : [
+            {
+                "pagePath" : "pages/index/index",
+                "iconPath" : "static/index_gray.png",
+                "selectedIconPath" : "static/index.png",
+                "text" : "首页"
+            },
+            {
+                "pagePath" : "pages/uni-center/uni-center",
+                "iconPath" : "static/user_gray.png",
+                "selectedIconPath" : "static/user.png",
+                "text" : "我的"
+            }
+        ]
+    }
+}

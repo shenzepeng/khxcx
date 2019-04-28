@@ -1,0 +1,8 @@
+<import src="/components/uni-popup.vue.wxml" />
+<import src="/components/mehaotian-search.vue.wxml" />
+<import src="/components/wzp-picker/wzpPicker.vue.wxml" />
+<import src="/components/mehaotian-search-revision/mehaotian-search-revision.vue.wxml" />
+<import src="/common/slots.wxml" />
+
+<template name="5402c7c6-default-5402c7c6-0"><view class="_view 5402c7c6 wx-info"><image class="_image 5402c7c6 img" src="{{userInfo.avatarUrl}}" mode></image><text class="_text 5402c7c6 text-info">{{userInfo.nickName}}</text></view><view class="_view 5402c7c6 money-box"><view class="_view 5402c7c6 title">提现金额</view><view id="allMoney" class="_view 5402c7c6">{{money}}</view></view><button id="getAllBtn" type="primary" bindtap="handleProxy" data-eventid="{{'5402c7c6-1'}}" data-comkey="{{$k}}" class="_button 5402c7c6">全部提现</button></template>
+

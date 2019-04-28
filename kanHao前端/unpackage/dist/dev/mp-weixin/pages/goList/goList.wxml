@@ -1,0 +1,2 @@
+<import src="./goList.vue.wxml" />
+    <template is="3d8c6106" data="{{ ...$root['0'], $root }}"/>

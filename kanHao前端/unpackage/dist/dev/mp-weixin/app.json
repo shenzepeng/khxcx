@@ -1,0 +1,47 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/uni-center/uni-center",
+    "pages/HM-search/HM-search",
+    "pages/userinfo/userinfo",
+    "pages/login/login",
+    "pages/wallet/wallet",
+    "pages/authPhone/authPhone",
+    "pages/goList/goList",
+    "pages/editList/editList",
+    "pages/myInvest/myInvest",
+    "pages/investDetail/investDetail",
+    "pages/buy/buy",
+    "pages/indexInvestDetail/indexInvestDetail",
+    "pages/sell/sell"
+  ],
+  "subPackages": [],
+  "window": {
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "uni-app",
+    "navigationBarBackgroundColor": "#F8F8F8",
+    "backgroundColor": "#F8F8F8"
+  },
+  "usingComponents": {},
+  "tabBar": {
+    "color": "#7A7E83",
+    "selectedColor": "#007AFF",
+    "borderStyle": "black",
+    "backgroundColor": "#F8F8F8",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "iconPath": "static/index_gray.png",
+        "selectedIconPath": "static/index.png",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/uni-center/uni-center",
+        "iconPath": "static/user_gray.png",
+        "selectedIconPath": "static/user.png",
+        "text": "我的"
+      }
+    ]
+  },
+  "permission": {}
+}
